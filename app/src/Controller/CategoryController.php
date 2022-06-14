@@ -22,17 +22,6 @@ class CategoryController extends AbstractController
     /**
      * Index action.
      *
-     * @param CategoryRepository $categoryRepository Category repository
-     *
-     * @return Response HTTP response
-     */
-    #[Route(
-        name: 'category_index',
-        methods: 'GET'
-    )]
-    /**
-     * Index action.
-     *
      * @param Request            $request        HTTP Request
      * @param CategoryRepository     $categoryRepository Category repository
      * @param PaginatorInterface $paginator      Paginator
