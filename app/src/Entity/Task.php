@@ -60,6 +60,12 @@ class Task
      * Category.
      *
      * @var Category
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="App\Entity\Category",
+     *     inversedBy="tasks",
+     *     fetch="EXTRA_LAZY",
+     * )
      */
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
