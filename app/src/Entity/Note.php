@@ -1,26 +1,24 @@
 <?php
 /**
- * Task entity.
+ * Note entity.
  */
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
+use App\Repository\NoteRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Task.
- *
- * @psalm-suppress MissingConstructor
+ * Note class.
  */
-#[ORM\Entity(repositoryClass: TaskRepository::class)]
-#[ORM\Table(name: 'tasks')]
-#[ORM\UniqueConstraint(name: 'uq_tasks_title', columns: ['title'])]
+
+#[ORM\Entity(repositoryClass: NoteRepository::class)]
+#[ORM\Table(name: 'notes')]
 #[UniqueEntity(fields: ['title'])]
-class Task
+class Note
 {
     /**
      * Primary key.
@@ -33,11 +31,17 @@ class Task
     private ?int $id = null;
 
     /**
+     * Title.
+     *
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $title = null;
+
+    /**
      * Created at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
@@ -47,35 +51,24 @@ class Task
      * Updated at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
     private ?DateTimeImmutable $updatedAt;
 
     /**
-     * Title.
+     * Note content.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title = null;
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
+    private ?string $content;
 
-    /**
-     * Category.
-     *
-     * @var Category
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="App\Entity\Category",
-     *     inversedBy="tasks",
-     *     fetch="EXTRA_LAZY",
-     * )
-     */
     #[ORM\ManyToOne(targetEntity: Category::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private $category;
 
 
     /**
@@ -86,6 +79,26 @@ class Task
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * Getter for title.
+     *
+     * @return string|null Title
+     */
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    /**
+     * Setter for title.
+     *
+     * @param string|null $title Title
+     */
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
     }
 
     /**
@@ -129,23 +142,24 @@ class Task
     }
 
     /**
-     * Getter for title.
+     * Getter for content.
      *
-     * @return string|null Title
+     * @return string|null Content
      */
-    public function getTitle(): ?string
+    public function getContent(): ?string
     {
-        return $this->title;
+        return $this->content;
     }
 
     /**
-     * Setter for title.
+     * Setter for content.
      *
-     * @param string|null $title Title
+     * @param string|null $content Content
      */
-    public function setTitle(?string $title): void
+    public function setContent(string $content): void
     {
-        $this->title = $title;
+        $this->content = $content;
+
     }
 
     public function getCategory(): ?Category
