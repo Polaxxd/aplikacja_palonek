@@ -14,8 +14,14 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class UserDataService implements UserDataServiceInterface
 {
+    /**
+     * User repository.
+     */
     private UserRepository $userRepository;
 
+    /**
+     * Hasher.
+     */
     private UserPasswordHasherInterface $passwordEncoder;
 
 

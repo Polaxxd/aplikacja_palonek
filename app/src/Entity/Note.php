@@ -163,11 +163,21 @@ class Note
 
     }
 
+    /**
+     * Getter for category.
+     *
+     * @return Category|null Category
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
+    /**
+     * Setter for category.
+     *
+     * @param Category|null $category Category
+     */
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
