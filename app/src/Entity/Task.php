@@ -65,7 +65,7 @@ class Task
     /**
      * Category.
      *
-     * @var Category
+     * @var Category|null
      *
      * @ORM\ManyToOne(
      *     targetEntity="App\Entity\Category",

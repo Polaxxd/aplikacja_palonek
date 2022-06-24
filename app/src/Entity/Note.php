@@ -155,7 +155,7 @@ class Note
     /**
      * Setter for content.
      *
-     * @param string|null $content Content
+     * @param string $content Content
      */
     public function setContent(string $content): void
     {

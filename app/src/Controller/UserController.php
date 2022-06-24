@@ -2,6 +2,7 @@
 /**
  * User Controller.
  */
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -18,7 +19,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class UserController extends AbstractController
 {
+    /**
+     * User service.
+     */
     private UserDataServiceInterface $userService;
+
+    /**
+     * Translator.
+     */
     private TranslatorInterface $translator;
 
     /**

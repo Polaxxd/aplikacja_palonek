@@ -61,8 +61,8 @@ class UserDataType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => $this->translator->trans('message.passwords_do_not_match'),
                 'options' => ['attr' => ['class' => 'form-control password-field']],
-                'first_options'  => ['label' => 'label_new_password'],
-                'second_options' => ['label' => 'label_repeat_password'],
+                'first_options'  => ['label' => $this->translator->trans('label.new_password')],
+                'second_options' => ['label' => $this->translator->trans('label.repeat_password')],
             ])
         ;
     }

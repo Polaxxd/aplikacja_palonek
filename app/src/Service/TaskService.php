@@ -8,9 +8,9 @@ namespace App\Service;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class TaskService.
@@ -52,12 +52,13 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int                $page    Page number
+     * @param int $page Page number
      * @param array<string, int> $filters Filters array
      *
      * @return PaginationInterface<SlidingPagination> Paginated list
+     * @throws NonUniqueResultException
      */
-    public function getPaginatedList(int $page,  array $filters = []): PaginationInterface
+    public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
 
@@ -108,5 +109,4 @@ class TaskService implements TaskServiceInterface
 
         return $resultFilters;
     }
-
 }

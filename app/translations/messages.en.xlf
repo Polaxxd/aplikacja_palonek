@@ -70,6 +70,22 @@
                 <source>label.created_at</source>
                 <target>Created at</target>
             </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.new_password">
+                <source>label.new_password</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.repeat_password">
+                <source>label.repeat_password</source>
+                <target>Repeat password</target>
+            </trans-unit>
             <trans-unit id="label.note">
                 <source>label.note</source>
                 <target>Note</target>
@@ -140,7 +156,7 @@
             </trans-unit>
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
-                <target>Create category #%id%</target>
+                <target>Create category</target>
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
@@ -160,7 +176,11 @@
             </trans-unit>
             <trans-unit id="title.change_password">
                  <source>title.change_password</source>
-                 <target>Change password</target>
+                 <target>Change password or email</target>
+            </trans-unit>
+            <trans-unit id="title.login">
+                 <source>title.login</source>
+                 <target>Please login</target>
             </trans-unit>
             <trans-unit id="title.note_create">
                 <source>title.note_create</source>
