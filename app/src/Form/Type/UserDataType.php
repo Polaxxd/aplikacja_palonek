@@ -12,12 +12,24 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class UserPasswordType.
  */
 class UserDataType extends AbstractType
 {
+    private TranslatorInterface $translator;
+
+    /**
+     * Constructor.
+     *
+     * @param TranslatorInterface      $translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
     /**
      * Builds the form.
      *
@@ -47,7 +59,7 @@ class UserDataType extends AbstractType
             ->add('newPassword', RepeatedType::class, [
                 'mapped' => false,
                 'type' => PasswordType::class,
-                'invalid_message' => 'Hasła muszą się zgadzać',
+                'invalid_message' => $this->translator->trans('message.passwords_do_not_match'),
                 'options' => ['attr' => ['class' => 'form-control password-field']],
                 'first_options'  => ['label' => 'label_new_password'],
                 'second_options' => ['label' => 'label_repeat_password'],

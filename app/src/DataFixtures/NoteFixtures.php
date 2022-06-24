@@ -26,7 +26,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
         $this->createMany(50, 'notes', function (int $i) {
             $note = new Note();
-            $note->setTitle($this->faker->sentence);
+            $note->setTitle($this->faker->word);
             $note->setContent($this->faker->sentence);
             $note->setCreatedAt(
                 DateTimeImmutable::createFromMutable(

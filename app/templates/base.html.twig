@@ -12,16 +12,40 @@
     {% endblock %}
 </head>
 <body>
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <div>{{ app.user.email }}</div>
-    <div>
-        <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
-    </div>
-{% else %}
-    <div>
-        <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a>
-    </div>
-{% endif %}
+<nav class="navbar text-uppercase align-items-start">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('note_index') }}">{{ 'label.note' |trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('task_index') }}">{{ 'label.task' |trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('category_index') }}">{{ 'label.category' |trans }}</a>
+        </li>
+    </ul>
+
+    <ul class="nav flex-column align-items-end">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li class="nav-item">
+                <span class="navbar-brand mb-0">{{ app.user.email }}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('user_panel', {id: app.user.id }) }}" title="{{ 'title.account_panel'|trans }}">
+                    {{ 'title.account_panel'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('app_logout') }}">{{ 'action.logout'|trans }}</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('app_login') }}">{{ 'action.login'|trans }}</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
 <main role="main" class="container-fluid">
     <div class="container-fluid">
         {% include 'default/_flash_messages.html.twig' %}
