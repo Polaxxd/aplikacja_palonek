@@ -32,7 +32,11 @@
                     <td>{{ note.updatedAt|format_date('long') }}</td>
                     <td>{{ note.title }}</td>
                     <td>{{ note.content }}</td>
-                    <td>{{ note.category.title }}</td>
+                    <td>
+                        <a href="{{ url('note_index', {'filters.category_id' : note.category.id}) }}" title="{{ note.category.title }}">
+                            {{ note.category.title }}
+                        </a>
+                    </td>
                     <td>
                         <a href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
@@ -62,6 +66,11 @@
                 {{ 'action.create' | trans }}
             </a>
         </div>
+        <p>
+            <a href="{{ url('note_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
 
 
 

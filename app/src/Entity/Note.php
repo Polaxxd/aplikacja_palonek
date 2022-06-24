@@ -68,7 +68,8 @@ class Note
     private ?string $content;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
-    private $category;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
 
     /**

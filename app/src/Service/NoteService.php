@@ -7,6 +7,7 @@ namespace App\Service;
 
 use App\Entity\Note;
 use App\Repository\NoteRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -21,18 +22,27 @@ class NoteService implements NoteServiceInterface
     private NoteRepository $noteRepository;
 
     /**
+     * Category service.
+     */
+    private CategoryServiceInterface $categoryService;
+
+    /**
      * Paginator.
      */
     private PaginatorInterface $paginator;
 
     /**
      * Constructor.
-     *
+     * @param CategoryServiceInterface $categoryService Category service
      * @param NoteRepository     $noteRepository Note repository
      * @param PaginatorInterface $paginator      Paginator
      */
-    public function __construct(NoteRepository $noteRepository, PaginatorInterface $paginator)
-    {
+    public function __construct(
+        CategoryServiceInterface $categoryService,
+        PaginatorInterface $paginator,
+        NoteRepository $noteRepository
+    ) {
+        $this->categoryService = $categoryService;
         $this->noteRepository = $noteRepository;
         $this->paginator = $paginator;
     }
@@ -40,14 +50,17 @@ class NoteService implements NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int                $page    Page number
+     * @param array<string, int> $filters Filters array
      *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface<SlidingPagination> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page,  array $filters = []): PaginationInterface
     {
+        $filters = $this->prepareFilters($filters);
+
         return $this->paginator->paginate(
-            $this->noteRepository->queryAll(),
+            $this->noteRepository->queryAll($filters),
             $page,
             NoteRepository::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -72,4 +85,26 @@ class NoteService implements NoteServiceInterface
     {
         $this->noteRepository->delete($note);
     }
+
+    /**
+     * Prepare filters for the notes list.
+     *
+     * @param array<string, int> $filters Raw filters from request
+     *
+     * @return array<string, object> Result array of filters
+     * @throws NonUniqueResultException
+     */
+    public function prepareFilters(array $filters): array
+    {
+        $resultFilters = [];
+        if (!empty($filters['category_id'])) {
+            $category = $this->categoryService->findOneById($filters['category_id']);
+            if (null !== $category) {
+                $resultFilters['category'] = $category;
+            }
+        }
+
+        return $resultFilters;
+    }
+
 }

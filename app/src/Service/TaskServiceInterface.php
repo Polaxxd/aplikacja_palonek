@@ -6,6 +6,7 @@
 namespace App\Service;
 
 use App\Entity\Task;
+use http\Env\Request;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -20,7 +21,7 @@ interface TaskServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface;
+    public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
 
     /**
      * Save entity.
@@ -35,4 +36,9 @@ interface TaskServiceInterface
      * @param Task $task Task entity
      */
     public function delete(Task $task): void;
+
+    /**
+     * Prepare filters for the tasks list.
+     */
+    public function prepareFilters(array $filters): array;
 }

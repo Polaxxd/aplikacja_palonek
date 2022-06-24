@@ -30,7 +30,11 @@
                     <td>{{ task.createdAt|format_date('long') }}</td>
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
-                    <td>{{ task.category.title }}</td>
+                    <td>
+                        <a href="{{ url('task_index', {'filters.category_id' : task.category.id}) }}" title="{{ task.category.title }}">
+                            {{ task.category.title }}
+                        </a>
+                    </td>
                     <td>
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
@@ -61,7 +65,11 @@
             </a>
         </div>
 
-
+        <p>
+            <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
 
     {% else %}
         <p>
