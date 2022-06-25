@@ -86,6 +86,10 @@
                 <source>label.repeat_password</source>
                 <target>Powtórz hasło</target>
             </trans-unit>
+            <trans-unit id="label.none">
+                <source>label.none</source>
+                <target>Brak</target>
+            </trans-unit>
             <trans-unit id="label.note">
                 <source>label.note</source>
                 <target>Notatka</target>
@@ -188,7 +192,7 @@
             </trans-unit>
             <trans-unit id="title.note_create">
                 <source>title.note_create</source>
-                <target>Stwórz notatkę #%id%</target>
+                <target>Stwórz notatkę</target>
             </trans-unit>
             <trans-unit id="title.note_delete">
                 <source>title.note_delete</source>
@@ -208,7 +212,7 @@
             </trans-unit>
             <trans-unit id="title.task_create">
                 <source>title.task_create</source>
-                <target>Stwórz zadanie #%id%</target>
+                <target>Stwórz zadanie</target>
             </trans-unit>
             <trans-unit id="title.task_delete">
                 <source>title.task_delete</source>
