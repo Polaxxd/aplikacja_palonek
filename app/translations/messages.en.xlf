@@ -150,6 +150,10 @@
                 <source>message.task_not_found</source>
                 <target>Task not found.</target>
             </trans-unit>
+            <trans-unit id="message.you_are_logged">
+                <source>message.you_are_logged</source>
+                <target>You are logged in as </target>
+            </trans-unit>
             <trans-unit id="title.account_panel">
                 <source>title.account_panel</source>
                 <target>Account panel</target>

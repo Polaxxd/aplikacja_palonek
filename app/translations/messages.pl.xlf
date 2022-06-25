@@ -150,6 +150,10 @@
                 <source>message.task_not_found</source>
                 <target>Nie znaleziono zadania.</target>
             </trans-unit>
+            <trans-unit id="message.you_are_logged">
+                <source>message.you_are_logged</source>
+                <target>Jesteś zalogowany jako </target>
+            </trans-unit>
             <trans-unit id="title.account_panel">
                 <source>title.account_panel</source>
                 <target>Konto</target>
