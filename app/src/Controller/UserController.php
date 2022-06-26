@@ -41,7 +41,6 @@ class UserController extends AbstractController
         $this->translator = $translator;
     }
 
-
     /**
      * Edit Function.
      *

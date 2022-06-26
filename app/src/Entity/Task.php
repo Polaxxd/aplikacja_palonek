@@ -77,7 +77,6 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-
     /**
      * Getter for Id.
      *

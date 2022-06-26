@@ -28,7 +28,6 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             return;
         }
 
-
         $this->createMany(100, 'tasks', function (int $i) {
             $task = new Task();
             $task->setTitle($this->faker->sentence);
@@ -48,7 +47,6 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
             return $task;
         });
-
 
         $this->manager->flush();
     }

@@ -14,7 +14,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Note class.
  */
-
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
 #[ORM\Table(name: 'notes')]
 #[UniqueEntity(fields: ['title'])]
@@ -70,7 +69,6 @@ class Note
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
-
 
     /**
      * Getter for Id.

@@ -2,6 +2,7 @@
 /**
  * Note fixtures
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Category;
@@ -44,7 +45,6 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
             return $note;
         });
-
 
         $this->manager->flush();
     }
