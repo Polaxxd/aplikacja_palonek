@@ -10,7 +10,7 @@ use App\Repository\UserRepository;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Class UserService
+ * Class UserService.
  */
 class UserDataService implements UserDataServiceInterface
 {
@@ -26,9 +26,6 @@ class UserDataService implements UserDataServiceInterface
 
     /**
      * Constructor.
-     *
-     * @param UserRepository              $userRepository
-     * @param UserPasswordHasherInterface $passwordEncoder
      */
     public function __construct(UserRepository $userRepository, UserPasswordHasherInterface $passwordEncoder)
     {
@@ -38,8 +35,6 @@ class UserDataService implements UserDataServiceInterface
 
     /**
      * Save user.
-     * @param User        $user
-     * @param string|null $newPlainPassword
      */
     public function save(User $user, ?string $newPlainPassword = null)
     {

@@ -138,5 +138,4 @@ class TaskRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
-
 }

@@ -27,10 +27,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Add user function.
-     *
-     * @param User $entity
-     * @param bool $flush
-     * @return void
      */
     public function add(User $entity, bool $flush = false): void
     {
@@ -43,10 +39,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Remove user function.
-     *
-     * @param User $entity
-     * @param bool $flush
-     * @return void
      */
     public function remove(User $entity, bool $flush = false): void
     {
@@ -59,10 +51,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Save user function.
-     *
-     * @param UserInterface $user
-     *
-     * @return void
      */
     public function save(UserInterface $user): void
     {

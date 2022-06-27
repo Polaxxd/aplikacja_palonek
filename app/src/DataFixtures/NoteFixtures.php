@@ -1,13 +1,12 @@
 <?php
 /**
- * Note fixtures
+ * Note fixtures.
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Note;
-use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 

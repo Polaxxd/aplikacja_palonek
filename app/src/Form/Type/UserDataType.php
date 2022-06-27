@@ -23,26 +23,19 @@ class UserDataType extends AbstractType
 
     /**
      * Constructor.
-     *
-     * @param TranslatorInterface      $translator
      */
     public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
+
     /**
      * Builds the form.
      *
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     *
-     * @return void
-     *
      * @see FormTypeExtensionInterface::buildForm()
-     *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -61,7 +54,7 @@ class UserDataType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => $this->translator->trans('message.passwords_do_not_match'),
                 'options' => ['attr' => ['class' => 'form-control password-field']],
-                'first_options'  => ['label' => $this->translator->trans('label.new_password')],
+                'first_options' => ['label' => $this->translator->trans('label.new_password')],
                 'second_options' => ['label' => $this->translator->trans('label.repeat_password')],
             ])
         ;
@@ -69,10 +62,6 @@ class UserDataType extends AbstractType
 
     /**
      * Configures the options for this type.
-     *
-     * @param OptionsResolver $resolver
-     *
-     * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -84,8 +73,6 @@ class UserDataType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     *
-     * @return string
      */
     public function getBlockPrefix(): string
     {

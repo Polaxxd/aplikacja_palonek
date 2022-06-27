@@ -55,5 +55,4 @@ interface CategoryServiceInterface
      * @throws NonUniqueResultException
      */
     public function findOneById(int $id): ?Category;
-
 }

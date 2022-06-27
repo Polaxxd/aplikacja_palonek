@@ -15,8 +15,6 @@ interface UserDataServiceInterface
 {
     /**
      * Save user.
-     * @param User        $user
-     * @param string|null $newPlainPassword
      */
     public function save(User $user, ?string $newPlainPassword = null);
 }
