@@ -24,7 +24,6 @@ class UserDataService implements UserDataServiceInterface
      */
     private UserPasswordHasherInterface $passwordEncoder;
 
-
     /**
      * Constructor.
      *

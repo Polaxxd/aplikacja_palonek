@@ -67,7 +67,6 @@ class UserDataType extends AbstractType
         ;
     }
 
-
     /**
      * Configures the options for this type.
      *
